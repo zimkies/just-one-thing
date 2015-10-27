@@ -7,4 +7,8 @@ class Task < ActiveRecord::Base
   scope :today,  -> (time_zone=Time.zone) {
     where(created_at: time_zone.now.midnight..time_zone.now.midnight + 24.hours - 1.second)
   }
+
+  def incomplete?
+    !completed?
+  end
 end

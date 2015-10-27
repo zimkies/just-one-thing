@@ -14,6 +14,7 @@ gem 'rollbar', '~> 2.4.0'
 gem 'oj', '~> 2.12.14'
 
 gem 'jquery-rails'
+gem 'clockwork'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
