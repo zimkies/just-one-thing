@@ -1,0 +1,92 @@
+ // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+
+ $blue: #1589B1;
+ $red: maroon;
+ $green: green;
+ $white: white;
+ $black: black;
+
+ $light-orange: #ff8c00;
+ $brand-primary: $blue;
+ $brand-secondary: $light-orange;
+
+ $white: white;
+ $black: black;
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ .flash {
+  margin-top: -20px; // The navbar pushes this down
+ }
+
+ body#welcome-index {
+  .navbar {
+    margin-bottom: 0px;
+  }
+  .front-page {
+    min-height: 100vh;
+    color: $white;
+    background-image: image-url(rock-climbing);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    h1 {
+      font-size: 4em;
+    }
+  }
+
+  .about {
+    min-height: 100vh;
+
+    .sign-up-container {
+
+    }
+    .jane {
+      color: magenta;
+    }
+  }
+}
+
+body#users-new {
+  min-height: 100vh;
+  color: $white;
+  background-image: image-url(meadow-flower-images-and-wallpapers-1);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  h1 {
+    font-size: 4em;
+  }
+}
+
+body#users-show {
+  min-height: 100vh;
+  color: $white;
+  background-image: image-url(beach-02);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  h1 {
+    font-size: 4em;
+  }
+}
+
+body#welcome-help {
+  min-height: 100vh;
+  // color: $white;
+  background-image: image-url(desert);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  h1 {
+    font-size: 4em;
+  }
+
+  h3 {
+    color: $blue;
+
+  }
+}
+
+

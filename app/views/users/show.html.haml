@@ -1,0 +1,27 @@
+.container
+  .row
+    .col-sm-6.col-sm-offset-3
+
+      %br
+      %br
+
+      %h2.text-center Hiya there #{@user.name}!
+
+      %br
+      %br
+
+      - task = @user.tasks.today.first
+      - if task.present? && task.incomplete?
+        %h4.text-center
+          I think your goal of #{task.description} is great for today!
+          %br
+          <a href="sms:ENV.fetch('TWILIO_CX_NUMBER')"}>Text me<a/> if you need any help motivating yourself to complete it.
+
+      - if task.present?
+        %h4.text-center
+          Great job completing your personal goal today! How about rewarding yourself with some ice cream?
+
+      - elsif @user.created_at.today?
+        %h4.text-center
+          We'll get you all set up tomorrow. Just chill today :) You've already taken a huge step towards prioritizing your personal life.
+

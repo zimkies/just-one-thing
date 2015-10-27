@@ -1,0 +1,28 @@
+.container
+  .row
+    .col-sm-6.col-sm-offset-3
+
+      =form_tag(users_path, method: "POST") do
+
+        %h3.text-center Sign up to get your personal life together
+
+        %br
+
+        .form-group
+          %input.form-control{placeholder: 'Name: Ben', name: "user[name]"}
+
+        %br
+
+        .form-group
+          %input.form-control{placeholder: 'Phone: 555-555-5555', name: "user[phone_number]"}
+
+        %br
+
+        %p.alert-warning.alert.text-center
+          We need your phone number so that Jane can contact you each day. Don't worry, we won't give it out or abuse it!
+
+        %br
+        %br
+
+        .text-center
+          %input.btn.btn-warning.btn-lg{type:'submit', value:'BEGIN'}

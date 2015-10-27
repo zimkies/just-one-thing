@@ -6,9 +6,23 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
+<body id="<%= controller.controller_name %>-<%= controller.action_name %>" class="<%= controller.controller_name %>">
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Jot</a>
+        <a class="navbar-brand" href="<%= help_path%>">?</a>
+      </div>
+    </div>
+  </nav>
+
+  <% flash.each do |key, value| %>
+    <div class="alert flash alert-<%= key %> text-center"><%= value %></div>
+  <% end %>
+
+  <%= yield %>
 
 </body>
 </html>
