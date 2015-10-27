@@ -10,12 +10,15 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'phone', '~> 1.2.3' # Phone Number Parsing
 gem 'twilio-ruby'
+gem 'rollbar', '~> 2.4.0'
+gem 'oj', '~> 2.12.14'
 
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml'
+gem 'sidekiq'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

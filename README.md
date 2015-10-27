@@ -6,6 +6,7 @@ An app that reminds you to do one personal thing a day
 # Setup
 [x] Splash Page
 [x] Signup
-[] Heroku
-[] Domain
+[x] Heroku
 [] Workers
+[] Reply processor
+[] Domain
