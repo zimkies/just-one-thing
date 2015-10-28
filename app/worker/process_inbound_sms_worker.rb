@@ -21,6 +21,11 @@ class ProcessInboundSmsWorker
       todays_task.update_attributes!(completed: true) if body.strip.downcase =~ /yes/
     elsif responding_to_add_text?
       user.tasks.create!(description: body, completed: false)
+      client.messages.create(
+        from: ENV.fetch('TWILIO_CX_NUMBER'),
+        to: from,
+        body: "Great! I'll check in on you later."
+      )
     else
       # Forward SMS to me
       forward_sms
