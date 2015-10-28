@@ -33,19 +33,12 @@ class UsersController < ApplicationController
 
     sleep(1.0)
 
-    if user.time_zone.now < user.time_zone.now.noon
-      client.messages.create(
-        from: ENV.fetch('TWILIO_CX_NUMBER'),
-        to: user.phone_number,
-        body: "As a primer for what's to come, let me know one small personal thing you want to accomplish today. It could be anything from 'Call Mom', to 'pay my electric bill.'"
-      )
-    else
-      client.messages.create(
-        from: ENV.fetch('TWILIO_CX_NUMBER'),
-        to: user.phone_number,
-        body: "For now, just relax :) Get a solid night's sleep tonight, and tomorrow we'll begin!"
-      )
-    end
+
+    client.messages.create(
+      from: ENV.fetch('TWILIO_CX_NUMBER'),
+      to: user.phone_number,
+      body: "For now, just relax :) Get a solid night's sleep tonight, and tomorrow we'll begin!"
+    )
   end
 
   def user_params

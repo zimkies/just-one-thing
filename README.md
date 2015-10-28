@@ -7,6 +7,12 @@ An app that reminds you to do one personal thing a day
 [x] Splash Page
 [x] Signup
 [x] Heroku
-[] Workers
-[] Reply processor
+[x] Workers
+[x] Reply processor
 [] Domain
+[] - CTA move to above the fold
+[] - Use first name in addressing people.
+
+# Bugs
+[x] Challen got a 'Rise and Shine' text on her first day
+[]

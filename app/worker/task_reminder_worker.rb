@@ -53,6 +53,7 @@ class TaskReminderWorker
   # :add, :complete, or nil
   def user_reminder_type(user)
     return unless user.time_zone.now.hour.in? SENDABLE_HOURS
+    return if user.created_at.today?
 
     if user.todays_task.nil?
       return :add
