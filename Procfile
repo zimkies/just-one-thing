@@ -1,2 +1,2 @@
-bundle exec sidekiq
-bundle exec clockwork lib/clockwork.rb
+sidekiq: bundle exec sidekiq
+clock: bundle exec clockwork lib/clockwork.rb
