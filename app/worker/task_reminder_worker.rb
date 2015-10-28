@@ -56,7 +56,7 @@ class TaskReminderWorker
 
     if user.todays_task.nil?
       return :add
-    elsif user.todays_task.incomplete? && (user.time_zone.now.hour > COMPLETE_TASK_TEXT_HOUR)
+    elsif user.todays_task.incomplete? && (user.time_zone.now.hour >= COMPLETE_TASK_TEXT_HOUR)
       return :complete
     end
   end

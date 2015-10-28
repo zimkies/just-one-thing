@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  post 'sms/inbound', to: 'sms#inbound'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
