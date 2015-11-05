@@ -12,10 +12,12 @@ An app that reminds you to do one personal thing a day
 - [] Domain
 
 ## General
-- [] Change copy for subsequent reminders
-- [] Reply to goal-completion texts - encouraging or funny.
+- [x] Change copy for subsequent reminders
+- [x] Change copy each day
+- [x] Reply to goal-completion texts - encouraging or funny.
 - [] Allow texting back a time to start reminders by
-- [] Change copy each day
+- [] Text suggestions of goals should include past things they've forgotten.
+- [] Record texts
 - [] - Use first name in addressing people.
 - [] - CTA move to above the fold
 - [] Send out summary notification

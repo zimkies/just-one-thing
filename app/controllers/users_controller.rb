@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     client.messages.create(
       from: ENV.fetch('TWILIO_CX_NUMBER'),
       to: user.phone_number,
-      body: "Hey there #{user.name}. I just wanted to introduce myself. I'm Jane (from just-one-thing), and together we are going to rock your personal life!"
+      body: "Hey there #{user.first_name}. I just wanted to introduce myself. I'm Jane (from just-one-thing), and together we are going to rock your personal life!"
     )
 
     sleep(1.0)

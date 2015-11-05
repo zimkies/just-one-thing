@@ -18,7 +18,21 @@ class ProcessInboundSmsWorker
     if user.nil?
       forward_sms
     elsif responding_to_completion_text?
-      todays_task.update_attributes!(completed: true) if body.strip.downcase =~ /yes/
+      if body.strip.downcase =~ /yes/
+        todays_task.update_attributes!(completed: true)
+        client.messages.create(
+          from: ENV.fetch('TWILIO_CX_NUMBER'),
+          to: from,
+          body: "Great job! Proud of ya <3"
+        )
+      else
+        client.messages.create(
+          from: ENV.fetch('TWILIO_CX_NUMBER'),
+          to: from,
+          body: still_not_completed_texts.sample
+        )
+        forward_sms
+      end
     elsif responding_to_add_text?
       user.tasks.create!(description: body, completed: false)
       client.messages.create(
@@ -33,6 +47,14 @@ class ProcessInboundSmsWorker
   end
 
   private
+
+  def still_not_completed_texts
+    [
+      "Not yet? OK, please try and get it done, I'll check in on ya later.",
+      "Still haven't done it? OK I'll keep checking in on ya.",
+      "I'm rooting for ya! I think you can do it - I'll check in on ya later",
+    ]
+  end
 
   attr_reader :to, :from, :body
   delegate :last_add_reminder_at, :last_complete_reminder_at, :todays_task,
