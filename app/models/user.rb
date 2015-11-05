@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
 
   delegate :midnight, to: "Time.zone.now"
 
+  def first_name
+    name.split(' ').first
+  end
+
   def todays_task
     tasks.order(:created_at).where("created_at > ?", midnight).last
   end
