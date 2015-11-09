@@ -14,6 +14,7 @@ class ProcessInboundSmsWorker
     p "user.nil? #{user.nil?}"
     p "responding_to_completion_text? #{responding_to_completion_text?}"
     p "responding_to_add_text? #{responding_to_add_text?}"
+    p "responding_to_reminder_time_text? #{responding_to_reminder_time_text?}"
 
     if user.nil?
       forward_sms
@@ -38,8 +39,23 @@ class ProcessInboundSmsWorker
       client.messages.create(
         from: ENV.fetch('TWILIO_CX_NUMBER'),
         to: from,
-        body: "Great! I'll check in on you later."
+        body: "Great! I'll check in on you after #{user.complete_task_reminder_time}. Text me back different time if it's too early/late."
       )
+    elsif responding_to_reminder_time_text?
+      time = (body.strip.to_i % 12) + 12
+      if user.update_attributes(complete_task_reminder_hour: (body.strip.to_i % 12) + 12, reminder_hour_updated_at: Time.zone.now)
+        client.messages.create(
+          from: ENV.fetch('TWILIO_CX_NUMBER'),
+          to: from,
+          body: "Cool! I've updated your reminder texts to start at #{user.complete_task_reminder_time}."
+        )
+      else
+        client.messages.create(
+          from: ENV.fetch('TWILIO_CX_NUMBER'),
+          to: from,
+          body: "#{body.strip} is not a valid time :( Please tell me what hour you want me to remind you. eg 9pm. Or 21:00"
+        )
+      end
     else
       # Forward SMS to me
       forward_sms
@@ -73,6 +89,14 @@ class ProcessInboundSmsWorker
     last_outbound_message[0] == :complete &&
     last_outbound_message[1].today? &&
     user.todays_task.incomplete?
+  end
+
+  def responding_to_reminder_time_text?
+    # Last text message (today) is add text && task has been created
+    last_outbound_message[0] == :add &&
+    last_outbound_message[1].today? &&
+    !user.reminder_hour_updated_at.try(:today?) &&
+    user.todays_task.present?
   end
 
   def responding_to_add_text?

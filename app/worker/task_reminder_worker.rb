@@ -1,8 +1,5 @@
 class TaskReminderWorker
   include Sidekiq::Worker
-  ADD_TASK_TEXT_HOUR = 9
-  COMPLETE_TASK_TEXT_HOUR = 19
-  SENDABLE_HOURS = ADD_TASK_TEXT_HOUR..23
 
   def perform
     users.each { |user| update_user(user) }
@@ -31,7 +28,6 @@ end
 
 class UserTaskReminder
   ADD_TASK_TEXT_HOUR = 9
-  COMPLETE_TASK_TEXT_HOUR = 19
   SENDABLE_HOURS = ADD_TASK_TEXT_HOUR..23
 
   def initialize(user)
@@ -53,7 +49,7 @@ class UserTaskReminder
 
     if todays_task.nil?
       return :add
-    elsif todays_task.incomplete? && (time_zone.now.hour >= COMPLETE_TASK_TEXT_HOUR)
+    elsif todays_task.incomplete? && (time_zone.now.hour >= complete_task_reminder_hour)
       return :complete
     end
   end

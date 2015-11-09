@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
   include HasGuid
+  VALID_COMPLETE_TASK_REMINDER_HOURS = 15..23
 
   validates :name, :phone_number, presence: :true
+  validates_inclusion_of :complete_task_reminder_hour, :in => VALID_COMPLETE_TASK_REMINDER_HOURS,
+    allow_nil: true
   validates_uniqueness_of :phone_number
 
   has_many :tasks
@@ -22,5 +25,13 @@ class User < ActiveRecord::Base
 
   def time_zone
     Time.zone
+  end
+
+  def complete_task_reminder_time
+    "#{(complete_task_reminder_hour - 12)}pm"
+  end
+
+  def complete_task_reminder_hour
+    self[:complete_task_reminder_hour] || 20
   end
 end

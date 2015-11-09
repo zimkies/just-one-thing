@@ -12,7 +12,7 @@ An app that reminds you to do one personal thing a day
 - [] Domain
 
 ## General
-- [] Send out summary notification
+- [x] Send out summary notification
 - [] Allow texting back a time to start reminders by
 - [] Record texts
 - [] Display all texts in a feed that I can see
@@ -21,6 +21,7 @@ An app that reminds you to do one personal thing a day
 - [] Send out unsubscribe link
 - [] Allow turning off for weekend
 - [] Post on hacker news
+- [] Follow up on cat-gif threat!
 
 ## Bugs
 - [x] Challen got a 'Rise and Shine' text on her first day

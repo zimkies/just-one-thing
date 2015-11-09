@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109220821) do
+ActiveRecord::Schema.define(version: 20151109230752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,12 +30,14 @@ ActiveRecord::Schema.define(version: 20151109220821) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "phone_number"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.datetime "last_complete_reminder_at"
     t.datetime "last_add_reminder_at"
     t.datetime "last_weekly_reminder_at"
     t.string   "guid"
+    t.integer  "complete_task_reminder_hour"
+    t.datetime "reminder_hour_updated_at"
   end
 
   add_foreign_key "tasks", "users"
