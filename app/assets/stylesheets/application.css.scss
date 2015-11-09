@@ -94,6 +94,9 @@ body#tasks-index {
       &.complete {
         color: green;
       }
+      &.new-week {
+        color: black;
+      }
     }
   }
 }

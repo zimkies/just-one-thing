@@ -15,7 +15,13 @@
           No tasks set up OR completed yet. Let's try to do at least one this week, ya?
       - else
         %ul.tasks
+          - week = @tasks.first.created_at.beginning_of_week
           - @tasks.map do |task|
+            - if task.created_at.beginning_of_week != week
+              %li.task.row.new-week -
+
+            - week = task.created_at.beginning_of_week
+
             - description_class = task.completed? ? 'complete' : 'incomplete'
             %li.task.row{class: description_class}
               %span.col-xs-5= task.created_at.to_s(:short_date)
