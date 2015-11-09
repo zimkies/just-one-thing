@@ -52,7 +52,7 @@ class WeeklySummary
 
   def tasks
     @tasks ||= user.tasks.order(:created_at, :desc)
-      .where("created_at > ?", 3.days.ago.beginning_of_week )
+      .where(created_at: 3.days.ago.beginning_of_week..3.days.ago.end_of_week)
   end
 
   def total_count
