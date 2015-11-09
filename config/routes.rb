@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get :help, to: 'welcome#help'
 
-  resources :users
+  resources :users do
+    resources :tasks
+  end
 
   post 'sms/inbound', to: 'sms#inbound'
 

@@ -1,0 +1,22 @@
+.container
+  .row
+    .col-sm-6.col-sm-offset-3
+
+      %br
+      %br
+
+      %h2.text-center Check out your recent tasks, #{@user.first_name}:
+
+      %br
+      %br
+
+      - if @tasks.count == 0
+        %p
+          No tasks set up OR completed this week. Let's try to do at least one this week, ya?
+      - else
+        %ul.tasks
+          - @tasks.map do |task|
+            - description_class = task.completed? ? 'complete' : 'incomplete'
+            %li.task.row{class: description_class}
+              %span.col-xs-5= task.created_at.to_s(:short_date)
+              %span.col-xs-7= task.description

@@ -72,6 +72,33 @@ body#users-show {
   }
 }
 
+body#tasks-index {
+  min-height: 100vh;
+  color: $white;
+  background-image: image-url(beach-02);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  h1 {
+    font-size: 4em;
+  }
+
+  .tasks {
+    list-style-type: none;
+    font-size: 1.5em;
+    .task {
+      // padding: 10px;
+      background-color: white;
+      opacity: .5;
+      color: red;
+      &.complete {
+        color: green;
+      }
+    }
+  }
+}
+
+
 body#welcome-help {
   min-height: 100vh;
   // color: $white;
