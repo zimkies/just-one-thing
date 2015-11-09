@@ -12,7 +12,7 @@
 
       - if @tasks.count == 0
         %p
-          No tasks set up OR completed this week. Let's try to do at least one this week, ya?
+          No tasks set up OR completed yet. Let's try to do at least one this week, ya?
       - else
         %ul.tasks
           - @tasks.map do |task|

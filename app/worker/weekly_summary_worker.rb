@@ -43,7 +43,7 @@ class WeeklySummary
   delegate :first_name, :phone_number, to: :user
 
   def tasks_page
-    "https://just-one-thing.herokuapp.com/users/#{user.id}/tasks"
+    "https://just-one-thing.herokuapp.com/users/#{user.short_guid}/tasks"
   end
 
   def completed_count

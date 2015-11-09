@@ -1,8 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
-    @tasks = @user.tasks.order(created_at: :desc).where("created_at > ?", 3.days.ago.beginning_of_week).all
+    @user = User.with_short_guid(params[:user_id]).first!
+    @tasks = @user.tasks.order(created_at: :desc).all
   end
-
-  private
 end

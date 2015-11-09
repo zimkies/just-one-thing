@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include HasGuid
+
   validates :name, :phone_number, presence: :true
   validates_uniqueness_of :phone_number
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109210959) do
+ActiveRecord::Schema.define(version: 20151109220821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20151109210959) do
     t.datetime "last_complete_reminder_at"
     t.datetime "last_add_reminder_at"
     t.datetime "last_weekly_reminder_at"
+    t.string   "guid"
   end
 
   add_foreign_key "tasks", "users"
