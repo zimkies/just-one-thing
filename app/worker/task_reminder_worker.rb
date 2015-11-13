@@ -58,7 +58,7 @@ class UserTaskReminder
 
   attr_reader :user
   delegate :time_zone, :created_at, :todays_task, :last_add_reminder_at,
-   :first_name, :phone_number, to: :user
+   :first_name, :phone_number, :complete_task_reminder_hour, to: :user
 
   def client
     @client ||= Twilio::REST::Client.new

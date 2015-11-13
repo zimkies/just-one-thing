@@ -13,7 +13,7 @@ An app that reminds you to do one personal thing a day
 
 ## General
 - [x] Send out summary notification
-- [] Allow texting back a time to start reminders by
+- [x] Allow texting back a time to start reminders by
 - [] Record texts
 - [] Display all texts in a feed that I can see
 - [] Text suggestions of goals should include past things they've forgotten.
